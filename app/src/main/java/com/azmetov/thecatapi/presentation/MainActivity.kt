@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.azmetov.thecatapi.data.network.ApiFactory
+import com.azmetov.thecatapi.data.network.client.NetworkClient
 import com.azmetov.thecatapi.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun getRes() {
-        val r = ApiFactory.apiService.search(0, 10)
-        Log.d("TAG", r.toString())
+        val client: NetworkClient by inject()
+        val res = client.getImages(10, 10)
+        Log.d("TAG", res.toString())
     }
 }

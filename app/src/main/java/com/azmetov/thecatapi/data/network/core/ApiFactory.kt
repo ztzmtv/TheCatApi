@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.data.network
+package com.azmetov.thecatapi.data.network.core
 
 
 import com.azmetov.thecatapi.util.Constants

@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.data.network
+package com.azmetov.thecatapi.data.network.core
 
 import com.azmetov.thecatapi.data.dto.ImageItemDto
 import retrofit2.http.GET
@@ -10,6 +10,6 @@ interface ImagesApi {
     suspend fun search(
         @Query("page") page: Int,
         @Query("limit") limit: Int
-    ): List<ImageItemDto?>?
+    ): List<ImageItemDto>
 
 }

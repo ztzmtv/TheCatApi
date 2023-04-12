@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.data.network
+package com.azmetov.thecatapi.data.network.core
 
 import okhttp3.Interceptor
 import okhttp3.Response
