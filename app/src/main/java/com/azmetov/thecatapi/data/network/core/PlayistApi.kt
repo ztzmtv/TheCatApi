@@ -1,6 +1,6 @@
 package com.azmetov.thecatapi.data.network.core
 
-import com.azmetov.thecatapi.data.dto.ImageItemDto
+import com.azmetov.thecatapi.data.network.dto.ImageItemDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

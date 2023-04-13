@@ -1,5 +1,9 @@
 package com.azmetov.thecatapi.domain.repository
 
-interface Repository {
+import androidx.paging.PagingData
+import com.azmetov.thecatapi.domain.entity.ImageEntity
+import kotlinx.coroutines.flow.Flow
 
+interface Repository {
+    fun getImages(): Flow<PagingData<ImageEntity>>
 }

@@ -1,6 +1,6 @@
 package com.azmetov.thecatapi.data.network.client
 
-import com.azmetov.thecatapi.data.dto.ImageItemDto
+import com.azmetov.thecatapi.data.network.dto.ImageItemDto
 import com.azmetov.thecatapi.data.network.core.ImagesApi
 
 class NetworkClientImpl(

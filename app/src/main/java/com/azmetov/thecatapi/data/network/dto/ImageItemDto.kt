@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.data.dto
+package com.azmetov.thecatapi.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 
