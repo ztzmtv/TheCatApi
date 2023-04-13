@@ -9,6 +9,7 @@ import com.azmetov.thecatapi.data.network.client.NetworkClient
 import com.azmetov.thecatapi.data.network.client.NetworkClientImpl
 import com.azmetov.thecatapi.data.paging.ImageRemoteMediator
 import com.azmetov.thecatapi.domain.repository.Repository
+import com.azmetov.thecatapi.presentation.ImagesPagingAdapter
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -22,5 +23,7 @@ val baseModule = module {
 
     factory<Repository> { RepositoryImpl(get(), get(), get()) }
     factory { ImageRemoteMediator(get(), get(), get()) }
+
+    factory { ImagesPagingAdapter(androidContext()) }
 
 }

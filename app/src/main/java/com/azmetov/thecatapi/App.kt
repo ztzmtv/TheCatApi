@@ -2,6 +2,7 @@ package com.azmetov.thecatapi
 
 import android.app.Application
 import com.azmetov.thecatapi.di.baseModule
+import com.azmetov.thecatapi.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -11,7 +12,8 @@ class App : Application() {
         startKoin {
             androidContext(this@App)
             modules(
-                baseModule
+                baseModule,
+                viewModelModule
             )
         }
     }
