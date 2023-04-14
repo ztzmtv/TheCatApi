@@ -4,8 +4,8 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.azmetov.thecatapi.data.db.ImageDbModel
-import com.azmetov.thecatapi.data.db.ImagesDao
+import com.azmetov.thecatapi.data.db.images.ImageDbModel
+import com.azmetov.thecatapi.data.db.images.ImagesDao
 import com.azmetov.thecatapi.data.mapper.Mapper
 import com.azmetov.thecatapi.data.network.core.ImagesApi
 

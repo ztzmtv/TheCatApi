@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.data.db
+package com.azmetov.thecatapi.data.db.images
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
@@ -9,9 +9,6 @@ import androidx.room.Transaction
 
 @Dao
 interface ImagesDao {
-    @Query("SELECT * FROM images")
-    suspend fun getBreweriesList(): List<ImageDbModel>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveImage(imageDbModel: ImageDbModel)
 
@@ -29,6 +26,4 @@ interface ImagesDao {
 
     @Query("DELETE FROM images")
     suspend fun clear()
-
-
 }

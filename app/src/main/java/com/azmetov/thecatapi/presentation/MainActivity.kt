@@ -19,11 +19,26 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         binding.recyclerView.adapter = adapter
+
+        adapter.setItemClickListener {
+            viewModel.addToFavorites(it)
+        }
+
+        adapter.setItemLongClickListener {
+            viewModel.deleteFavorite(it)
+        }
+
         lifecycleScope.launch {
             viewModel.flow.collectLatest {
                 adapter.submitData(it)
             }
         }
 
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        adapter.clearListeners()
     }
 }

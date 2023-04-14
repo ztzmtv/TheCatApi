@@ -12,7 +12,6 @@ import com.azmetov.thecatapi.domain.repository.Repository
 import com.azmetov.thecatapi.presentation.GlideLoader
 import com.azmetov.thecatapi.presentation.ImageLoader
 import com.azmetov.thecatapi.presentation.ImagesPagingAdapter
-import com.bumptech.glide.module.GlideModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -22,9 +21,10 @@ val baseModule = module {
 
     single { ApiFactory.apiService }
     single { AppDatabase.getInstance(androidContext()).imagesDao() }
+    single { AppDatabase.getInstance(androidContext()).favoritesDao() }
     single { Mapper() }
 
-    factory<Repository> { RepositoryImpl(get(), get(), get()) }
+    factory<Repository> { RepositoryImpl(get(), get(), get(), get()) }
     factory { ImageRemoteMediator(get(), get(), get()) }
 
     factory { ImagesPagingAdapter(androidContext(), get()) }

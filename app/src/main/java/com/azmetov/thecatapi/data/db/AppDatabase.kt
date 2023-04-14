@@ -4,9 +4,20 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.azmetov.thecatapi.data.db.favorites.FavoriteDbModel
+import com.azmetov.thecatapi.data.db.favorites.FavoritesDao
+import com.azmetov.thecatapi.data.db.images.ImageDbModel
+import com.azmetov.thecatapi.data.db.images.ImagesDao
 
 
-@Database(entities = [ImageDbModel::class], version = 1, exportSchema = false)
+@Database(
+    entities = [
+        ImageDbModel::class,
+        FavoriteDbModel::class
+    ],
+    version = 2,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -33,4 +44,5 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun imagesDao(): ImagesDao
+    abstract fun favoritesDao(): FavoritesDao
 }

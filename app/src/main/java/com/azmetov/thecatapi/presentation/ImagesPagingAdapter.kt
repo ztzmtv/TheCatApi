@@ -16,15 +16,17 @@ class ImagesPagingAdapter(
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
-            loader.loadInto(it.url, holder.binding.image, context);
+            loader.loadInto(it.url, holder.binding.image, context)
+
+            holder.itemView.setOnClickListener {
+                onItemClickListener?.invoke(item)
+            }
+            holder.itemView.setOnLongClickListener {
+                onItemLongClickListener?.invoke(item)
+                true
+            }
         }
-        holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(position)
-        }
-        holder.itemView.setOnLongClickListener {
-            onItemLongClickListener?.invoke(position)
-            true
-        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolder {
@@ -36,11 +38,11 @@ class ImagesPagingAdapter(
         return ImagesViewHolder(binding)
     }
 
-    fun setItemClickListener(listener: (Int) -> Unit) {
+    fun setItemClickListener(listener: (ImageEntity) -> Unit) {
         onItemClickListener = listener
     }
 
-    fun setItemLongClickListener(listener: (Int) -> Unit) {
+    fun setItemLongClickListener(listener: (ImageEntity) -> Unit) {
         onItemLongClickListener = listener
     }
 
@@ -49,8 +51,8 @@ class ImagesPagingAdapter(
         onItemLongClickListener = null
     }
 
-    private var onItemClickListener: ((Int) -> Unit)? = null
-    private var onItemLongClickListener: ((Int) -> Unit)? = null
+    private var onItemClickListener: ((ImageEntity) -> Unit)? = null
+    private var onItemLongClickListener: ((ImageEntity) -> Unit)? = null
 
     class ImagesViewHolder(val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root)
 }
