@@ -29,8 +29,8 @@ class RepositoryImpl(
             remoteMediator = mediator,
             pagingSourceFactory = { dao.getPagingSource() }
         ).flow
-            .map { pagindData ->
-                pagindData.map {
+            .map { pagingData ->
+                pagingData.map {
                     mapper.mapImageDbModelToEntity(it)
                 }
             }
