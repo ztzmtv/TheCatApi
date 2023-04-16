@@ -19,7 +19,6 @@ class ImageViewModel(
         viewModelScope.launch {
             repository.saveToFavorites(imageEntity)
         }
-
     }
 
     fun deleteFavorite(imageEntity: ImageEntity) {
@@ -28,10 +27,7 @@ class ImageViewModel(
         }
     }
 
-    fun getFavorites(): Flow<List<ImageEntity>> = flow {
-        viewModelScope.launch {
-            val favorites = repository.getFavorites()
-            emit(favorites)
-        }
+    fun getFavorites(): Flow<List<ImageEntity>> {
+        return repository.getFavorites()
     }
 }

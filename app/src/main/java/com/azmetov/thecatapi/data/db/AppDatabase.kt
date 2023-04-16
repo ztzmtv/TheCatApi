@@ -15,7 +15,7 @@ import com.azmetov.thecatapi.data.db.images.ImagesDao
         ImageDbModel::class,
         FavoriteDbModel::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

@@ -18,13 +18,7 @@ class Mapper {
     )
 
     fun mapFavoriteEntityToDbModel(imageEntity: ImageEntity) = FavoriteDbModel(
-        id = imageEntity.id,
-        url = imageEntity.url
-    )
-
-    fun mapFavoriteDbModelToEntity(favoriteDbModel: FavoriteDbModel) = ImageEntity(
-        id = favoriteDbModel.id,
-        url = favoriteDbModel.url
+        catId = imageEntity.id
     )
 
 }

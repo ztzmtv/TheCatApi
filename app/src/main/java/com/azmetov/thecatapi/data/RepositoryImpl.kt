@@ -38,18 +38,19 @@ class RepositoryImpl(
             }
     }
 
+
     override suspend fun saveToFavorites(imageEntity: ImageEntity) {
         val dbModel = mapper.mapFavoriteEntityToDbModel(imageEntity)
         favoritesDao.saveFavorite(dbModel)
     }
 
-    override suspend fun getFavorites(): List<ImageEntity> {
-        val dbModelList = favoritesDao.getFavorites()
-        val result = mutableListOf<ImageEntity>()
-        dbModelList.forEach {
-            result.add(mapper.mapFavoriteDbModelToEntity(it))
+    override fun getFavorites(): Flow<List<ImageEntity>> {
+        val flowFavs = favoritesDao.getFavoritesCats()
+        return flowFavs.map { list ->
+            list.map { favCat ->
+                mapper.mapImageDbModelToEntity(favCat.imageDbModel)
+            }
         }
-        return result
     }
 
     override suspend fun deleteFavorite(imageEntity: ImageEntity) {

@@ -16,7 +16,7 @@ class ImagesPagingAdapter(
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
-            loader.loadInto(it.url, holder.binding.image, context)
+            loader.loadInto(it.url, holder.binding.imageIv, context)
 
             holder.itemView.setOnClickListener {
                 onItemClickListener?.invoke(item)
@@ -26,7 +26,6 @@ class ImagesPagingAdapter(
                 true
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolder {
