@@ -9,7 +9,7 @@ import com.azmetov.thecatapi.data.db.favorites.FavoritesDao
 import com.azmetov.thecatapi.data.db.images.ImagesDao
 import com.azmetov.thecatapi.data.mapper.Mapper
 import com.azmetov.thecatapi.data.paging.ImageRemoteMediator
-import com.azmetov.thecatapi.domain.entity.ImageEntity
+import com.azmetov.thecatapi.domain.entity.CatEntity
 import com.azmetov.thecatapi.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,7 +22,7 @@ class RepositoryImpl(
     private val mapper: Mapper
 ) : Repository {
 
-    override fun getImages(): Flow<PagingData<ImageEntity>> {
+    override fun getImages(): Flow<PagingData<CatEntity>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 10,
@@ -38,22 +38,23 @@ class RepositoryImpl(
             }
     }
 
-
-    override suspend fun saveToFavorites(imageEntity: ImageEntity) {
-        val dbModel = mapper.mapFavoriteEntityToDbModel(imageEntity)
+    override suspend fun saveToFavorites(catEntity: CatEntity) {
+        val dbModel = mapper.mapFavoriteEntityToDbModel(catEntity)
         favoritesDao.saveFavorite(dbModel)
     }
 
-    override fun getFavorites(): Flow<List<ImageEntity>> {
+    override fun getFavorites(): Flow<List<CatEntity?>> {
         val flowFavs = favoritesDao.getFavoritesCats()
-        return flowFavs.map { list ->
-            list.map { favCat ->
-                mapper.mapImageDbModelToEntity(favCat.imageDbModel)
+        return flowFavs.map { listFavoriteCats ->
+            listFavoriteCats.map { favoriteCat ->
+                if (favoriteCat.imageDbModel != null) {
+                    mapper.mapImageDbModelToEntity(favoriteCat.imageDbModel)
+                } else null
             }
         }
     }
 
-    override suspend fun deleteFavorite(imageEntity: ImageEntity) {
-        favoritesDao.deleteFavorite(imageEntity.id)
+    override suspend fun deleteFavorite(catEntity: CatEntity) {
+        favoritesDao.deleteFavorite(catEntity.id)
     }
 }

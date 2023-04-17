@@ -3,7 +3,7 @@ package com.azmetov.thecatapi.data.mapper
 import com.azmetov.thecatapi.data.db.favorites.FavoriteDbModel
 import com.azmetov.thecatapi.data.db.images.ImageDbModel
 import com.azmetov.thecatapi.data.network.dto.ImageItemDto
-import com.azmetov.thecatapi.domain.entity.ImageEntity
+import com.azmetov.thecatapi.domain.entity.CatEntity
 
 class Mapper {
 
@@ -12,13 +12,13 @@ class Mapper {
         url = dto.url
     )
 
-    fun mapImageDbModelToEntity(dbModel: ImageDbModel) = ImageEntity(
+    fun mapImageDbModelToEntity(dbModel: ImageDbModel) = CatEntity(
         id = dbModel.id,
         url = dbModel.url
     )
 
-    fun mapFavoriteEntityToDbModel(imageEntity: ImageEntity) = FavoriteDbModel(
-        catId = imageEntity.id
+    fun mapFavoriteEntityToDbModel(catEntity: CatEntity) = FavoriteDbModel(
+        catId = catEntity.id
     )
 
 }

@@ -6,10 +6,10 @@ import com.azmetov.thecatapi.data.db.images.ImageDbModel
 
 data class FavoriteCats(
     @Embedded
-    val imageDbModel: ImageDbModel,
+    val favoriteDbModel: FavoriteDbModel,
     @Relation(
-        parentColumn = "id",
-        entityColumn = "catId"
+        parentColumn = "catId",
+        entityColumn = "id"
     )
-    val favoriteDbModel: FavoriteDbModel
+    val imageDbModel: ImageDbModel? = null
 )

@@ -14,31 +14,28 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: ImageViewModel by viewModel()
     private val adapter: ImagesPagingAdapter by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         binding.recyclerView.adapter = adapter
 
-        adapter.setItemClickListener {
-            viewModel.addToFavorites(it)
-        }
-
-        adapter.setItemLongClickListener {
-            viewModel.deleteFavorite(it)
-        }
+        adapter.setItemClickListener { viewModel.addToFavorites(it) }
+        adapter.setItemLongClickListener { viewModel.deleteFavorite(it) }
 
         lifecycleScope.launch {
-            viewModel.flow.collectLatest {
-                adapter.submitData(it)
-            }
+            viewModel.flow.collectLatest { adapter.submitData(it) }
         }
 
-
+        lifecycleScope.launch{
+            val a = viewModel.getFavorites()
+            a.collectLatest { adapter.setFavorites(it) }
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        adapter.clearListeners()
+        adapter.clear()
     }
 }
