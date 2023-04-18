@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.azmetov.thecatapi.databinding.FragmentSingleCatBinding
+import com.azmetov.thecatapi.presentation.imageloader.ImageLoader
+import org.koin.android.ext.android.inject
 
 class SingleCatFragment : Fragment() {
     private var _binding: FragmentSingleCatBinding? = null
     private val binding get() = _binding!!
+    private val imageLoader: ImageLoader by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,11 +25,25 @@ class SingleCatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val urlArgument = arguments?.getString(EXTRA_ID)
+        imageLoader.loadInto(urlArgument!!, binding.catIv, requireContext())
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val EXTRA_ID = "url"
+        fun newInstance(url: String): Fragment {
+            return SingleCatFragment().apply {
+                arguments = Bundle().apply {
+                    putString(EXTRA_ID, url)
+                }
+            }
+        }
     }
 }
