@@ -2,10 +2,10 @@ package com.azmetov.thecatapi.presentation
 
 import android.content.Context
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.azmetov.thecatapi.databinding.ImageItemBinding
 import com.azmetov.thecatapi.domain.entity.CatEntity
@@ -16,7 +16,7 @@ import kotlinx.coroutines.cancel
 class ImagesPagingAdapter(
     private val context: Context,
     private val loader: ImageLoader
-) : PagingDataAdapter<CatEntity, ImagesPagingAdapter.ImagesViewHolder>(ImagesItemDiffCallback) {
+) : PagingDataAdapter<CatEntity, ImagesViewHolder>(ImagesItemDiffCallback) {
 
     private var onItemClickListener: ((CatEntity) -> Unit)? = null
     private var onItemLongClickListener: ((CatEntity) -> Unit)? = null
@@ -66,6 +66,15 @@ class ImagesPagingAdapter(
         onItemLongClickListener = null
         adapterScope.cancel()
     }
+}
 
-    class ImagesViewHolder(val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root)
+class ImagesViewHolder(val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root)
+object ImagesItemDiffCallback : DiffUtil.ItemCallback<CatEntity>() {
+    override fun areItemsTheSame(oldItem: CatEntity, newItem: CatEntity): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: CatEntity, newItem: CatEntity): Boolean {
+        return oldItem == newItem
+    }
 }
