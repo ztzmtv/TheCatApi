@@ -43,14 +43,14 @@ class RepositoryImpl(
         favoritesDao.saveFavorite(dbModel)
     }
 
-    override fun getFavorites(): Flow<List<CatEntity?>> {
+    override fun getFavorites(): Flow<List<CatEntity>> {
         val flowFavs = favoritesDao.getFavoritesCats()
         return flowFavs.map { listFavoriteCats ->
             listFavoriteCats.map { favoriteCat ->
                 if (favoriteCat.imageDbModel != null) {
                     mapper.mapImageDbModelToEntity(favoriteCat.imageDbModel)
                 } else null
-            }
+            }.filterNotNull()
         }
     }
 

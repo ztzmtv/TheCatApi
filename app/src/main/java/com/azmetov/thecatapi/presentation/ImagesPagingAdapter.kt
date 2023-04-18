@@ -20,7 +20,7 @@ class ImagesPagingAdapter(
 
     private var onItemClickListener: ((CatEntity) -> Unit)? = null
     private var onItemLongClickListener: ((CatEntity) -> Unit)? = null
-    private var favorites = mutableListOf<CatEntity?>()
+    private var favorites = mutableListOf<CatEntity>()
     private var adapterScope = CoroutineScope(Dispatchers.Default)
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
@@ -49,8 +49,8 @@ class ImagesPagingAdapter(
         return ImagesViewHolder(binding)
     }
 
-    fun setFavorites(favorites: List<CatEntity?>) {
-        this.favorites.addAll(favorites.filterNotNull())
+    fun setFavorites(favorites: List<CatEntity>) {
+        this.favorites.addAll(favorites)
     }
 
     fun setItemClickListener(listener: (CatEntity) -> Unit) {

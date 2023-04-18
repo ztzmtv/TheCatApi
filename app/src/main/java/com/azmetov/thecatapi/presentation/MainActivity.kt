@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         binding.recyclerView.adapter = adapter
-
         adapter.setItemClickListener { viewModel.addToFavorites(it) }
         adapter.setItemLongClickListener { viewModel.deleteFavorite(it) }
 
@@ -28,9 +27,8 @@ class MainActivity : AppCompatActivity() {
             viewModel.flow.collectLatest { adapter.submitData(it) }
         }
 
-        lifecycleScope.launch{
-            val a = viewModel.getFavorites()
-            a.collectLatest { adapter.setFavorites(it) }
+        lifecycleScope.launch {
+            viewModel.getFavorites().collectLatest { adapter.setFavorites(it) }
         }
     }
 

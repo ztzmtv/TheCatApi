@@ -26,7 +26,7 @@ class ImageViewModel(
         }
     }
 
-    fun getFavorites(): Flow<List<CatEntity?>> {
+    fun getFavorites(): Flow<List<CatEntity>> {
         return repository.getFavorites()
     }
 }

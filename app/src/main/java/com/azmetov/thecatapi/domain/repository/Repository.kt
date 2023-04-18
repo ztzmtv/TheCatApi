@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface Repository {
     fun getImages(): Flow<PagingData<CatEntity>>
     suspend fun saveToFavorites(catEntity: CatEntity)
-    fun getFavorites(): Flow<List<CatEntity?>>
+    fun getFavorites(): Flow<List<CatEntity>>
     suspend fun deleteFavorite(catEntity: CatEntity)
 }
