@@ -18,10 +18,10 @@ class ImagesPagingAdapter(
     private val loader: ImageLoader
 ) : PagingDataAdapter<CatEntity, ImagesViewHolder>(ImagesItemDiffCallback) {
 
-    private var onItemClickListener: ((CatEntity) -> Unit)? = null
-    private var onItemLongClickListener: ((CatEntity) -> Unit)? = null
     private var favorites = mutableListOf<CatEntity>()
     private var adapterScope = CoroutineScope(Dispatchers.Default)
+    private var onItemClickListener: ((CatEntity) -> Unit)? = null
+    private var onItemLongClickListener: ((CatEntity) -> Unit)? = null
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         val item = getItem(position)
@@ -62,9 +62,9 @@ class ImagesPagingAdapter(
     }
 
     fun clear() {
+        adapterScope.cancel()
         onItemClickListener = null
         onItemLongClickListener = null
-        adapterScope.cancel()
     }
 }
 

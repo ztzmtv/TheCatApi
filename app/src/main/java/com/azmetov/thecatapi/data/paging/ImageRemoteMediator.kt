@@ -29,7 +29,7 @@ class ImageRemoteMediator(
         val offset = pageIndex * limit
 
         return try {
-            val images = fetchLaunches(limit, offset)
+            val images = fetchCats(limit, offset)
             if (loadType == LoadType.REFRESH) {
                 dao.refreshImageList(images)
             } else {
@@ -52,7 +52,7 @@ class ImageRemoteMediator(
         return pageIndex
     }
 
-    private suspend fun fetchLaunches(
+    private suspend fun fetchCats(
         limit: Int,
         offset: Int
     ): List<ImageDbModel> {
