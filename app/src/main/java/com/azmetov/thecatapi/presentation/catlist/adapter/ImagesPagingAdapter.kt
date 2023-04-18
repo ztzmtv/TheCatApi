@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation
+package com.azmetov.thecatapi.presentation.catlist.adapter
 
 import android.content.Context
 import android.graphics.Color
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.azmetov.thecatapi.databinding.ImageItemBinding
 import com.azmetov.thecatapi.domain.entity.CatEntity
+import com.azmetov.thecatapi.presentation.imageloader.ImageLoader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel

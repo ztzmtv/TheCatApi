@@ -9,9 +9,9 @@ import com.azmetov.thecatapi.data.network.client.NetworkClient
 import com.azmetov.thecatapi.data.network.client.NetworkClientImpl
 import com.azmetov.thecatapi.data.paging.ImageRemoteMediator
 import com.azmetov.thecatapi.domain.repository.Repository
-import com.azmetov.thecatapi.presentation.GlideLoader
-import com.azmetov.thecatapi.presentation.ImageLoader
-import com.azmetov.thecatapi.presentation.ImagesPagingAdapter
+import com.azmetov.thecatapi.presentation.imageloader.GlideLoader
+import com.azmetov.thecatapi.presentation.imageloader.ImageLoader
+import com.azmetov.thecatapi.presentation.catlist.adapter.ImagesPagingAdapter
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

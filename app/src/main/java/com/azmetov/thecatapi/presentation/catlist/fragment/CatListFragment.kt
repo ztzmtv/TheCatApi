@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation
+package com.azmetov.thecatapi.presentation.catlist.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.azmetov.thecatapi.databinding.FragmentCatListBinding
+import com.azmetov.thecatapi.presentation.catlist.viewmodel.CatListViewModel
+import com.azmetov.thecatapi.presentation.catlist.adapter.ImagesPagingAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -15,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CatListFragment : Fragment() {
     private var _binding: FragmentCatListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ImageViewModel by viewModel()
+    private val viewModel: CatListViewModel by viewModel()
     private val adapter: ImagesPagingAdapter by inject()
 
     override fun onCreateView(

@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation
+package com.azmetov.thecatapi.presentation.catlist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import com.azmetov.thecatapi.domain.repository.Repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class ImageViewModel(
+class CatListViewModel(
     private val repository: Repository
 ) : ViewModel() {
 

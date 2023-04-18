@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation
+package com.azmetov.thecatapi.presentation.imageloader
 
 import android.content.Context
 import android.widget.ImageView
