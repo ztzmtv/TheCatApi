@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation.catlist.fragment
+package com.azmetov.thecatapi.presentation.ui.catlist.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import com.azmetov.thecatapi.R
 import com.azmetov.thecatapi.databinding.FragmentCatListBinding
-import com.azmetov.thecatapi.presentation.catlist.adapter.ImagesPagingAdapter
-import com.azmetov.thecatapi.presentation.catlist.viewmodel.CatListViewModel
-import com.azmetov.thecatapi.presentation.singlecat.fragment.SingleCatFragment
+import com.azmetov.thecatapi.presentation.ui.catlist.adapter.ImagesPagingAdapter
+import com.azmetov.thecatapi.presentation.ui.catlist.viewmodel.CatListViewModel
+import com.azmetov.thecatapi.presentation.ui.singlecat.fragment.SingleCatFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject

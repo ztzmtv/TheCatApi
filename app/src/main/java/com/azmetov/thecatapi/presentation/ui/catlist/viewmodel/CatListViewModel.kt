@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation.catlist.viewmodel
+package com.azmetov.thecatapi.presentation.ui.catlist.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

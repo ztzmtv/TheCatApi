@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation.catlist.adapter
+package com.azmetov.thecatapi.presentation.ui.catlist.adapter
 
 import android.content.Context
 import android.graphics.Color

@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation.main
+package com.azmetov.thecatapi.presentation.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.azmetov.thecatapi.R
 import com.azmetov.thecatapi.databinding.ActivityMainBinding
-import com.azmetov.thecatapi.presentation.catlist.fragment.CatListFragment
+import com.azmetov.thecatapi.presentation.ui.catlist.fragment.CatListFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

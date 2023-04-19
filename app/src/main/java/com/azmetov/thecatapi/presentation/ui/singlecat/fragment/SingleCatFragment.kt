@@ -1,4 +1,4 @@
-package com.azmetov.thecatapi.presentation.singlecat.fragment
+package com.azmetov.thecatapi.presentation.ui.singlecat.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
