@@ -5,13 +5,13 @@
 
 Использованы технологии:
 
-Room
-Retrofit
-Glide
-Paging3
-Koin
-Okhttp
-Coroutines
+Room,
+Retrofit,
+Glide,
+Paging3,
+Koin,
+Okhttp,
+Coroutines.
 
 Для работы необходим токен.
 файл local.properties находится тут: https://disk.yandex.ru/d/ckLCkSNFTkHnLw
