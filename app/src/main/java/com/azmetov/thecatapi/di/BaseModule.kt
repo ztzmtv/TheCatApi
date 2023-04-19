@@ -12,6 +12,8 @@ import com.azmetov.thecatapi.domain.repository.Repository
 import com.azmetov.thecatapi.presentation.imageloader.GlideLoader
 import com.azmetov.thecatapi.presentation.imageloader.ImageLoader
 import com.azmetov.thecatapi.presentation.catlist.adapter.ImagesPagingAdapter
+import com.azmetov.thecatapi.presentation.imageloader.Downloader
+import com.azmetov.thecatapi.presentation.imageloader.ImageDownloader
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -29,5 +31,6 @@ val baseModule = module {
 
     factory { ImagesPagingAdapter(androidContext(), get()) }
     factory<ImageLoader> { GlideLoader() }
+    factory<Downloader> { ImageDownloader(androidContext()) }
 
 }
